@@ -1,0 +1,42 @@
+<p>
+</p>
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel panel-heading"> Gallery </div>
+   <!-- <form #g=(ngForm) (ngSubmit)="onSearch(g.value)" >
+      <div class="form-group">
+        <label> Mots clés </label>
+        <input type="text" name="motCle" ngModel required>
+        <button type="submit" class="btn btn-primary"></button>
+      </div>
+    </form>-->
+    <div class="panel-body">
+      <label> Mots clés </label>
+      <input type="text" [(ngModel)]="motCle">
+      <button class="btn btn-primary" (click)="onSearch()" [disabled]="!motCle">Recherche</button>
+    <div class="row">
+      <div class="col-md-3" *ngFor="let p of photos?.hits">
+      <div class="panel panel-primary spacer cadre"> 
+      <div class="panel-heading"> 
+        <img class="img-circle" width="50" height="50" src="{{p.userImageURL}} ">
+        {{p.tags}}     
+      </div>
+      <div class="panel-body" >
+        <div>
+          <p>User: {{p.user}} </p>
+        </div>
+        <img src="{{p.previewURL}} ">
+      </div>
+    </div>
+  </div>
+  </div>
+    <div class="row">
+      <ul class="nav nav-pills">
+        <li [ngClass]="{active: currentPage == i+1}" class="cursor" *ngFor="let page of listPages; let i=index">
+           <a (click)="goToPage(i)">{{i+1}}</a>  
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
